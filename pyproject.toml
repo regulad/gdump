@@ -20,6 +20,11 @@ python = "^3.11,<3.13"  # 3.13 is planned to make sweeping changes
 typer = {version = "^0.9.0", extras = ["all"]}
 typing-extensions = "^4.7.1"
 importlib-metadata = "^6.8.0"
+ics = "^0.7.2"
+requests = "^2.32.3"
+rich = "^13.7.1"
+pytz = "^2024.1"
+beautifulsoup4 = "^4.12.3"
 
 [tool.poetry.dev-dependencies]
 Pygments = ">=2.10.0"
@@ -48,7 +53,7 @@ xdoctest = {extras = ["colors"], version = ">=0.15.10"}
 myst-parser = {version = ">=0.16.1"}
 
 [tool.poetry.scripts]
-gdump = "gdump.__main__:main"
+gdump = "gdump.__main__:cli"
 
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^5.13.0"
