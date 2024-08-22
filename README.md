@@ -21,23 +21,27 @@
 
 ## Features
 
-- TODO
+Export Genesis schedule to an ICS file for importing into a calendar app.
 
-## Requirements
-
-- TODO
+![Genesis Dumper Banner](./banner.png)
 
 ## Installation
 
-You can install _Genesis Dumper_ via [pip] from [PyPI]:
+You can install _Genesis Dumper_ via [pip] or pipx from [PyPI]:
 
 ```console
-$ pip install gdump
+$ pipx install gdump
+$ gdump
 ```
 
 ## Usage
 
 Please see the [Command-line Reference] for details.
+
+* Run `gdump --help`
+* Run `gdump`
+* Input your username & password when prompted
+* Import the `schedule_xxxxxx_xxxx-xxxx.ics` file into your calendar app
 
 ## Contributing
 

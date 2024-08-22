@@ -233,6 +233,8 @@ def create_calendar(courses: list[RefinedCourse], calendar_name: str) -> Calenda
         course_name_fancy = course_name_fancy.replace("Ap", "AP")
         course_name_fancy = course_name_fancy.replace("Am", "Am")
         course_name_fancy = course_name_fancy.replace("Cp", "CP")
+        course_name_fancy = course_name_fancy.replace("Am", "AM")
+        course_name_fancy = course_name_fancy.replace("Tv", "TV")
         course_name_fancy = course_name_fancy.replace("Ab", "AB")
         course_name_fancy = course_name_fancy.replace("Ai", "AI")
         course_name_fancy = course_name_fancy.replace("Bc", "BC")
