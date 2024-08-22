@@ -1,0 +1,21 @@
+{
+  "_checkout": null,
+  "_output_dir": "/Users/regulad/repositories",
+  "_repo_dir": "/Users/regulad/.cookiecutters/cookiecutter-neopy",
+  "_template": "gh:regulad/cookiecutter-neopy",
+  "author": "Parker Wahle",
+  "copyright_year": "2024",
+  "description": "\ud83d\udcc6 Genesis Dumper lets you dump your schedule from Genesis and turn it into an .ICS file for use in Google Calendar or Outlook",
+  "development_status": "Development Status :: 1 - Planning",
+  "email": "regulad@regulad.xyz",
+  "enforce_checks_on_creation": false,
+  "environ_prefix": "GDUMP_",
+  "friendly_name": "Genesis Dumper",
+  "github_user": "regulad",
+  "initialize_git": true,
+  "license": "GPL-3.0",
+  "line_length": "100",
+  "package_name": "gdump",
+  "project_name": "gdump",
+  "version": "0.1.0"
+}
