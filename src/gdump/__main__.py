@@ -164,7 +164,7 @@ def parse_courses(html_content: str) -> tuple[str, str, list[UnparsedCourse]]:
 
                 course_name = course_details[0]
                 teacher = course_details[1] if len(course_details) > 1 else ""
-                room = course_details[2].removeprefix("Room: ") if len(course_details) > 2 else ""
+                room = course_details[2].removeprefix("Room: ").removeprefix("Room ") if len(course_details) > 2 else ""
                 color = (
                     course_info.get("style", "")
                     .split("background-color:", 1)[-1]
@@ -182,7 +182,7 @@ def parse_courses(html_content: str) -> tuple[str, str, list[UnparsedCourse]]:
                 }
                 courses.append(course)
 
-    return (schedule_name, schedule_date, courses)
+    return schedule_name, schedule_date, courses
 
 
 class RefinedCourse(TypedDict):
@@ -245,9 +245,7 @@ def create_calendar(courses: list[RefinedCourse], calendar_name: str) -> Calenda
 
         class_emoji = "🎓"  # Default emoji for general classes
 
-        if "AP" in course_name_fancy or "IB" in course_name_fancy:
-            class_emoji = "📚"  # Books emoji for AP/IB classes
-        elif "Math" in course_name_fancy or "Algebra" in course_name_fancy or "Geometry" in course_name_fancy or "Calculus" in course_name_fancy or "Statistics" in course_name_fancy or "Precalc" in course_name_fancy:
+        if "Math" in course_name_fancy or "Algebra" in course_name_fancy or "Geometry" in course_name_fancy or "Calculus" in course_name_fancy or "Statistics" in course_name_fancy or "Precalc" in course_name_fancy:
             class_emoji = "➗"  # Division emoji for Math-related classes
         elif "Science" in course_name_fancy or "Biology" in course_name_fancy or "Chemistry" in course_name_fancy:
             class_emoji = "🔬"  # Microscope emoji for Science classes
@@ -302,6 +300,10 @@ def create_calendar(courses: list[RefinedCourse], calendar_name: str) -> Calenda
             class_emoji = "👥"
         elif "Break" in course_name_fancy:
             class_emoji = "☕"
+        elif "Orchestra" in course_name_fancy or "Band" in course_name_fancy or "Choir" in course_name_fancy:
+            class_emoji = "🎵"
+        elif "AP" in course_name_fancy or "IB" in course_name_fancy:
+            class_emoji = "📚"  # Books emoji for AP/IB classes
 
         event = Event(
             name=f"{class_emoji} {course_name_fancy}",
@@ -430,8 +432,8 @@ def main(
 
         calendar = create_calendar(all_courses, calendar_name)
 
-        with open(filename, "w") as f:
-            f.write(str(calendar))
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(calendar.serialize())
             for i in range(100):
                 progress.update(save_task, advance=1)
 
